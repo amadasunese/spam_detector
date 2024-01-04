@@ -1,4 +1,4 @@
-## Email Classification Flask App
+## Email Classification App
 
 This application provides a simple web interface and API endpoint for classifying emails as spam or not spam using a machine learning model.
 
