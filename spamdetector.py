@@ -49,4 +49,4 @@ def internal_server_error(e):
     return jsonify({'error': 'Internal Server Error'}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

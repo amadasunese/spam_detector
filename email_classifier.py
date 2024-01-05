@@ -3,9 +3,9 @@ import email
 import requests
 
 # Email server credentials and settings
-imap_url = 'imap.gpinigeria.org'
-username = 'amadasunese@gpinigeria.org'
-password = 'Gentle&&08058767059'
+imap_url = 'imap.example.com'
+username = ''
+password = ''
 mailbox = 'INBOX'
 
 # Connect to the email server
@@ -33,7 +33,6 @@ for mail_id in messages:
                 # If the email is classified as spam, take an action
                 if response.json()['spam']:
                     print(f"Spam detected in email {email_subject} from {email_from}")
-                    # Here, you can flag, move, or delete the email
 
 # Close the connection
 mail.close()
