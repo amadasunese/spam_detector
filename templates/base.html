@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Email Classifier{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css"> 
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Spam</span> Detector</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/feedback">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="app">
+        {% block content %}
+        <h2>Check if an Email is Spam</h2>
+        <textarea id="emailText" placeholder="Enter email content here..."></textarea>
+        <button id="classifyButton">Classify Email</button>
+        <div id="result"></div>
+        {% endblock %}
+    </div>
+
+    <!-- Social Links Section -->
+    <footer class="footer">
+        <p>Follow us on:</p>
+        <a href="https://github.com/amadasunese" target="_blank">GitHub</a> |
+        <a href="https://www.linkedin.com/in/amadasun-ese//" target="_blank">LinkedIn</a> |
+        <a href="https://twitter.com/amadasunese" target="_blank">Twitter</a> |
+        <a href="https://www.facebook.com/amadasunese" target="_blank">Facebook</a>
+    </footer>
+
+    <!-- Copyright Section -->
+    <div class="copyright">
+        &copy; 2024 Ese Amadasun. All Rights Reserved.
+    </div>
+    
+    <script src="/static/js/script.js"></script> <!-- Link to your JS file -->
+</body>
+</html>

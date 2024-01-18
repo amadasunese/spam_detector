@@ -1,21 +1,69 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect
 import joblib
 import logging
+import smtplib
 
 # Initialize Flask app and load the model
 app = Flask(__name__)
 model = joblib.load('spam_detector_model.joblib')
+
+# Configure your email settings
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'amadasunese@gmail.com'
+EMAIL_HOST_PASSWORD = 'qxxo axga dzia jjsw'
+RECIPIENT_ADDRESS = 'amadasunese@gmail.com'
+
+
+# app.secret_key = "secret_key"
+
+
+# # Configure Flask-Mail
+# app.config["MAIL_SERVER"] = "smtp.gmail.com"
+# app.config["MAIL_PORT"] = 465
+# app.config["MAIL_USE_SSL"] = True
+# app.config["MAIL_USERNAME"] = 'amadasunese@gmail.com'
+# app.config["MAIL_PASSWORD"] = 'qxxo axga dzia jjsw'
+# mail = Mail(app)
+
+
+@app.route('/send_feedback', methods=['POST'])
+def send_feedback():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message')
+
+    # Email message setup
+    email_message = f"Subject: Feedback from {name}\n\nFrom: {email}\n\nMessage: {message}"
+
+    # Sending the email
+    try:
+        server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
+        server.ehlo()
+        server.starttls()
+        server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
+        server.sendmail(EMAIL_HOST_USER, RECIPIENT_ADDRESS, email_message)
+        server.close()
+        return 'Feedback sent successfully!'
+    except Exception as e:
+        return str(e)
+        return redirect(url_for('home'))
+    
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('base.html')
 
-@app.route('/contact')
-def contact():
-    return render_template('contact')
+@app.route('/feedback')
+def feedback():
+    return render_template('feedback_form.html')
+
+# @app.route('/contact')
+# def contact():
+#     return render_template('contact')
 
 @app.route('/predict', methods=['POST'])
 def predict():
