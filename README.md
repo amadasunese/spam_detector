@@ -1,4 +1,7 @@
-## Email Classification App
+
+![Alt text](static/images/spamdetector.png)
+
+<h1>Email Classification Application</h1>
 
 This application provides a simple web interface and API endpoint for classifying emails as spam or not spam using a machine learning model.
 
@@ -33,9 +36,7 @@ Place your trained model file (spam_detector_model.joblib) in the root directory
 **Running the Application**
 <ul>
 <li>Navigate to the application's directory in your terminal or command prompt.</li>
-<li>Start the Flask application:
-![Alt text](run.png)
-Replace app.py with the name of your Flask application script.
+<li>Start the Flask application: On the command line, type python spamdetector.py
 <li>Once the server starts, it will be accessible at http://localhost:5000.</li>
 <li>To use the web interface, open a web browser and go to http://localhost:5000.</li>
 </ul>
@@ -45,6 +46,8 @@ Replace app.py with the name of your Flask application script.
 To classify an email via the API, send a POST request to http://localhost:5000/predict with the email content. Example using curl:
 
 curl -X POST http://localhost:5000/predict -F 'text=Sample email content here'
+
+NOTE: Ensure that the server is running before using the API.
 
 **User Interface**
 
@@ -57,3 +60,5 @@ Ensure your machine learning model is compatible with the application.
 This application is intended for demonstration purposes and may require additional security and error handling features for production use.
 
 The model used in this application has been trained using email dataset with 5572 entries. You may wish to train the model with more robust data to get different and better results.
+
+For better functionality, this model can be deployed in an email processing environment for better result

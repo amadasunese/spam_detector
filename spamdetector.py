@@ -5,7 +5,7 @@ import smtplib
 
 # Initialize Flask app and load the model
 app = Flask(__name__)
-model = joblib.load('spam_detector_model.joblib')
+model = joblib.load('spam_detector_model2.joblib')
 
 # Configure your email settings
 EMAIL_HOST = 'smtp.gmail.com'
