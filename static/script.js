@@ -1,6 +1,6 @@
 document.getElementById('classifyButton').addEventListener('click', function() {
     var emailText = document.getElementById('emailText').value;
-    fetch('http://localhost:5000/predict', {
+    fetch('https://spamdetector.pythonanywhere.com/predict', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

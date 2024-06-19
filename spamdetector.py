@@ -2,10 +2,34 @@ from flask import Flask, request, jsonify, render_template, redirect
 import joblib
 import logging
 import smtplib
+import os
 
 # Initialize Flask app and load the model
 app = Flask(__name__)
-model = joblib.load('spam_detector_model2.joblib')
+model = joblib.load('spam_detector/spam_detector_model2.joblib')
+
+
+# # Get the absolute path to the directory where the current script is located
+# current_directory = os.path.spam_detector(os.path.abspath(__file__))
+
+# # Construct the full path to the joblib file
+# model_path = os.path.join(current_directory, 'spam_detector_model2.joblib')
+
+# # Load the model
+# model = joblib.load(model_path)
+
+
+# model = joblib.load('spam_detector_model2.joblib')
+
+# # Get the absolute path to the directory where the current script is located
+# current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# # Construct the full path to the joblib file
+# model_path = os.path.join(current_directory, 'spam_detector_model2.joblib')
+
+# # Load the model
+# model = joblib.load(model_path)
+
 
 # Configure your email settings
 EMAIL_HOST = 'smtp.gmail.com'
@@ -48,7 +72,7 @@ def send_feedback():
     except Exception as e:
         return str(e)
         return redirect(url_for('home'))
-    
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
